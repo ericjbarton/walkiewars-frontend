@@ -1,18 +1,13 @@
+<script></script>
+
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>WELCOME TO WALKIE WARS</h1>
+
+    <img alt="Dog logo" src="../assets/GeneralDogCartoon.png" />
+
+    <h5>General St. Bernard Montgomery, hero of the Second Squirrel War</h5>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
-export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
-  },
-};
-</script>
+<style></style>
