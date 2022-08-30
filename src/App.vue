@@ -5,6 +5,8 @@
     <router-link to="/create">Create Account</router-link>
     |
     <router-link to="/login">Log In</router-link>
+    |
+    <router-link to="/map">To the Map!</router-link>
   </nav>
   <router-view />
 </template>
