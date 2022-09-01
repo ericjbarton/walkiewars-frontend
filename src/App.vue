@@ -9,7 +9,20 @@
     <router-link to="/map">To the Map!</router-link>
   </nav>
   <router-view />
+  <div id="app">
+    <MapView />
+  </div>
 </template>
+<script>
+// import MapView from "../src/views/MapView.vue";
+
+// export default {
+//   name: "App",
+//   components: {
+//     MapView,
+//   },
+// };
+</script>
 
 <style>
 #app {
@@ -19,6 +32,11 @@
   text-align: center;
   color: #ffffff;
   background-color: black;
+  margin: 0px;
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 
 nav {
