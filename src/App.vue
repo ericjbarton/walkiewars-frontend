@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #19a6c8">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="background-color: #19a6c8">
     <div class="container-fluid">
       <a class="navbar-brand" href="">
         <img src="./assets/GeneralDogCartoon.png" alt="" width="50" height="50" class="d-inline-block align-text-top" />
@@ -40,6 +40,9 @@
         </div>
       </div>
     </div>
+    <li>
+      <a class="nav-link" href="/dogs">The Dogs</a>
+    </li>
   </nav>
   <!-- <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
