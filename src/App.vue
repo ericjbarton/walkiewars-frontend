@@ -1,54 +1,57 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/create">Create Account</router-link>
-    |
-    <router-link to="/login">Log In</router-link>
-    |
-    <router-link to="/map">To the Map!</router-link>
-  </nav>
-  <router-view />
-  <div id="app">
-    <MapView />
-  </div>
-</template>
-<script>
-// import MapView from "../src/views/MapView.vue";
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #19a6c8">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">
+        <img src="./assets/GeneralDogCartoon.png" alt="" width="50" height="50" class="d-inline-block align-text-top" />
+        WALKIEWARS
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li>
+            <a class="nav-link" href="/map">To the Map!</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/create">Join up!</a>
+          </li>
+          <li></li>
+          <li>
+            <a v-if="!isLoggedIn" class="nav-link" href="/login">Sign In</a>
+          </li>
+          <li>
+            <a v-if="isLoggedIn" class="nav-link" href="/logout">Sign out</a>
+          </li>
+        </ul>
 
-// export default {
-//   name: "App",
-//   components: {
-//     MapView,
-//   },
-// };
-</script>
+        <div>
+          <!-- Rounded switch -->
+
+          <!-- <toggle onclick="darkMode()">Darkmode</toggle> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- <div v-if="this.flashMessage" class="alert alert-success">
+    {{ flashMessage }}
+  </div> -->
+  <router-view />
+</template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #ffffff;
-  background-color: black;
-  margin: 0px;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-nav a.router-link-exact-active {
-  color: #0026fc;
 }
 </style>
