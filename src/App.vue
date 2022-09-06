@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="background-color: #19a6c8">
     <div class="container-fluid">
-      <a class="navbar-brand" href="">
+      <a class="navbar-brand" href="/home">
         <img src="./assets/GeneralDogCartoon.png" alt="" width="50" height="50" class="d-inline-block align-text-top" />
         WALKIEWARS
       </a>
@@ -32,12 +32,6 @@
             <a v-if="isLoggedIn" class="nav-link" href="/logout">Sign out</a>
           </li>
         </ul>
-
-        <div>
-          <!-- Rounded switch -->
-
-          <!-- <toggle onclick="darkMode()">Darkmode</toggle> -->
-        </div>
       </div>
     </div>
     <li>
@@ -49,12 +43,17 @@
   </div> -->
   <router-view />
 </template>
-
+<script></script>
 <style>
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: "grayscale";
+
   text-align: center;
+  -moz-text-decoration-color: white;
+  /* padding: 0; */
+  background-color: black;
+  background-position: 100vh, 100vw;
 }
 </style>

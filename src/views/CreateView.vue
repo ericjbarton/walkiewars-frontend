@@ -63,4 +63,14 @@ export default {
       <input type="submit" value="Submit" />
     </form>
   </div>
+
+  <div class="signup">
+    <p>General Eisenhounder</p>
+    <img alt="Dog logo" src="../assets/dog16.png" />
+  </div>
 </template>
+<style>
+#app {
+  color: white;
+}
+</style>
