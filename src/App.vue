@@ -33,10 +33,8 @@
           </li>
         </ul>
       </div>
+      <a class="nav-link" href="/dogs">.</a>
     </div>
-    <li>
-      <a class="nav-link" href="/dogs">The Dogs</a>
-    </li>
   </nav>
   <!-- <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
@@ -54,6 +52,6 @@
   -moz-text-decoration-color: white;
   /* padding: 0; */
   background-color: black;
-  background-position: 100vh, 100vw;
+  background-position: 100vh, 200%;
 }
 </style>

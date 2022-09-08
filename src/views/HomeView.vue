@@ -7,6 +7,9 @@
     <img alt="Dog logo" src="../assets/GeneralDogCartoon.png" />
   </div>
 </template>
-<!-- DIV FOR TEXT -->
 
-<style></style>
+<style>
+#app {
+  color: white;
+}
+</style>

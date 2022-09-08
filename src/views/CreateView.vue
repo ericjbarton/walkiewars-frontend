@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="signup">
+  <div class="signup" position="aboslute">
     <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>
@@ -44,7 +44,7 @@ export default {
         <input type="text" v-model="newUserParams.dog_name" />
       </div>
       <div>
-        <label>Link to Dog Photo</label>
+        <label>Dog Picture</label>
         <input type="text" v-model="newUserParams.photo_url" />
       </div>
       <div>
@@ -65,12 +65,13 @@ export default {
   </div>
 
   <div class="signup">
-    <p>General Eisenhounder</p>
     <img alt="Dog logo" src="../assets/dog16.png" />
+    <p>General Eisenhounder</p>
   </div>
 </template>
 <style>
 #app {
   color: white;
+  text-align: center;
 }
 </style>

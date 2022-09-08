@@ -46,4 +46,13 @@ export default {
       <input type="submit" value="Submit" />
     </form>
   </div>
+  <div class="signup">
+    <img alt="Dog logo" src="../assets/dog23.png" />
+    <p>General Doglas MacBarkthur devises another brilliant strategy</p>
+  </div>
 </template>
+<style>
+#app {
+  color: white;
+}
+</style>

@@ -4,17 +4,21 @@ import { computed, ref, onMounted, onUnmounted, watch } from "vue";
 import { useGeolocation } from "../useGeolocation";
 
 import { Loader } from "@googlemaps/js-api-loader";
+
 const GOOGLE_MAPS_API_KEY = "AIzaSyCZsVW_CBi7UsbMeFW2Bh7AgsbmuIe9PXw";
 
 export default {
   name: "App",
   setup() {
     const { coords } = useGeolocation();
-    const currPos = computed(() => ({
+    let currPos = computed(() => ({
       lat: coords.value.latitude,
       lng: coords.value.longitude,
     }));
-    const otherPos = ref(null);
+    let otherPos = ref(null);
+    let otherPos2 = ref(null);
+    let otherPos3 = ref(null);
+
     const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY });
     const mapDiv = ref(null);
     let map = ref(null);
@@ -27,63 +31,42 @@ export default {
       });
       clickListener = map.value.addListener(
         "click",
-        ({ latLng: { lat, lng } }) => (otherPos.value = { lat: lat(), lng: lng() })
+        ({ latLng: { lat, lng } }) => (
+          (otherPos.value = { lat: lat(), lng: lng() }), (otherPos2.value = { lat: lat(), lng: lng() })
+        )
       );
     });
     onUnmounted(async () => {
       if (clickListener) clickListener.remove();
     });
-    let line = null;
-    watch([map, currPos, otherPos], () => {
-      if (line) line.setMap(null);
-      if (map.value && otherPos.value != null)
-        line = new google.maps.Polyline({
+    let polylineCoords = null;
+    watch([map, currPos, otherPos, otherPos2], () => {
+      if (polylineCoords) polylineCoords.setMap(null);
+      if (currPos.value && otherPos.value != null)
+        polylineCoords = new google.maps.Polyline({
           path: [currPos.value, otherPos.value],
           map: map.value,
         });
+      if (otherPos.value && otherPos2.value != null)
+        polylineCoords = new google.maps.Polyline({
+          path: [otherPos.value, otherPos2.value],
+          map: map.value,
+        });
+      if (otherPos2.value && otherPos3.value != null)
+        polylineCoords = new google.maps.Polyline({
+          path: [otherPos2.value, otherPos3.value],
+          map: map.value,
+        });
     });
-    const haversineDistance = (pos1, pos2) => {
-      const R = 3958.8; // Radius of the Earth in miles
-      const rlat1 = pos1.lat * (Math.PI / 180); // Convert degrees to radians
-      const rlat2 = pos2.lat * (Math.PI / 180); // Convert degrees to radians
-      const difflat = rlat2 - rlat1; // Radian difference (latitudes)
-      const difflon = (pos2.lng - pos1.lng) * (Math.PI / 180); // Radian difference (longitudes)
-      const d =
-        2 *
-        R *
-        Math.asin(
-          Math.sqrt(
-            Math.sin(difflat / 2) * Math.sin(difflat / 2) +
-              Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)
-          )
-        );
-      return d;
-    };
-    const distance = computed(() => (otherPos.value === null ? 0 : haversineDistance(currPos.value, otherPos.value)));
-    return { currPos, otherPos, distance, mapDiv };
+
+    const distance = computed(() =>
+      otherPos.value === null ? 0 : haversineDistance(currPos.value, otherPos.value, otherPos2.value)
+    );
+    return { currPos, otherPos, otherPos2, otherPos3, distance, mapDiv };
   },
 };
 </script>
 
 <template>
-  <div class="d-flex text-center" style="height: 0vh">
-    <div class="m-auto">
-      <h4>Your Position</h4>
-      Latitude: {{ currPos.lat.toFixed(2) }}, Longitude:
-      {{ currPos.lng.toFixed(2) }}
-    </div>
-    <div class="m-auto">
-      <h4>Distance</h4>
-      {{ distance.toFixed(2) }} miles
-    </div>
-    <div class="m-auto">
-      <h4>Clicked Position</h4>
-      <span v-if="otherPos">
-        Latitude: {{ otherPos.lat.toFixed(2) }}, Longitude:
-        {{ otherPos.lng.toFixed(2) }}
-      </span>
-      <span v-else>Click the map to select a position</span>
-    </div>
-  </div>
   <div ref="mapDiv" style="width: 100%; height: 100vh"></div>
 </template>
