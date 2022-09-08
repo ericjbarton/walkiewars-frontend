@@ -5,7 +5,7 @@ import { useGeolocation } from "../useGeolocation";
 
 import { Loader } from "@googlemaps/js-api-loader";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyCZsVW_CBi7UsbMeFW2Bh7AgsbmuIe9PXw";
+const GOOGLE_MAPS_API_KEY = "APIKEY";
 
 export default {
   name: "App",
