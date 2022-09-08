@@ -10,7 +10,7 @@ createApp(App)
   .use(router)
   .use(VueGoogleMaps, {
     load: {
-      key: "APIKEY,
+      key: "APIKEY",
     },
   })
   .mount("#app");

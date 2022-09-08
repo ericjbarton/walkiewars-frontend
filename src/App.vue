@@ -52,6 +52,5 @@
   -moz-text-decoration-color: white;
   /* padding: 0; */
   background-color: black;
-  background-position: 100vh, 200%;
 }
 </style>
