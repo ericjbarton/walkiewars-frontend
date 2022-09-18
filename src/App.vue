@@ -36,7 +36,6 @@
       <a class="nav-link" href="/dogs">.</a>
     </div>
   </nav>
-  <body></body>
   <!-- <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
   </div> -->
@@ -52,5 +51,6 @@
   text-align: center;
   -moz-text-decoration-color: white;
   /* padding: 0; */
+  background-color: black;
 }
 </style>
